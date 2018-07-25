@@ -231,6 +231,14 @@
               <item name="onlinestudy" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="wingstudio" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="onlinestudy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="onlinestudy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -454,12 +462,12 @@
       <workItem from="1532341315842" duration="4549000" />
       <workItem from="1532351910886" duration="549000" />
       <workItem from="1532403056971" duration="607000" />
-      <workItem from="1532479862271" duration="301000" />
+      <workItem from="1532479862271" duration="463000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14564000" />
+    <option name="totallyTimeSpent" value="14726000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="357" y="-24" width="1303" height="780" extended-state="6" />
