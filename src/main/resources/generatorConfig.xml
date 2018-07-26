@@ -22,8 +22,8 @@
         <jdbcConnection
                 driverClass="com.mysql.jdbc.Driver"
                 connectionURL="jdbc:mysql://132.232.106.68:3306/onlinestudy"
-                userId="root"
-                password="1234">
+                userId="test1"
+                password="test1">
         </jdbcConnection>
 
 
