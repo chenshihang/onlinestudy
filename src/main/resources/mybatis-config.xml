@@ -3,8 +3,8 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-    <!-- 别名 -->
-    <typeAliases>
-        <package name="org.wingstudio.entity"/>
-    </typeAliases>
+    <!--&lt;!&ndash; 开启驼峰命名对应，这个开启后，若实体类是数据库字段的驼峰命名，可以不用写类的属性和数据库列的对应 &ndash;&gt;-->
+    <!--<settings>-->
+        <!--<setting name="mapUnderscoreToCamelCase" value="true" />-->
+    <!--</settings>-->
 </configuration>
