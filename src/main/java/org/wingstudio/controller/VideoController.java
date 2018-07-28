@@ -21,7 +21,7 @@ public class VideoController {
 
     @RequestMapping("/to_upload_page")
     public String toUploadPage(){
-        return "WEB-INF/pages/video_upload";
+        return "video_upload";
     }
 
 
@@ -41,6 +41,6 @@ public class VideoController {
         video_file.transferTo(file);
         System.out.println("-----------------");
         System.out.println(request.getContextPath());
-        return "video_test";
+        return "redirect:/video_test.jsp";
     }
 }

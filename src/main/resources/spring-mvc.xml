@@ -37,7 +37,7 @@
     <!-- 结果视图解析器 -->
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/" />
+        <property name="prefix" value="/WEB-INF/pages/" />
         <property name="suffix" value=".jsp"/>
     </bean>
 
