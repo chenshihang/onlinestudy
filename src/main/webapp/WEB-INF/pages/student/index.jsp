@@ -71,7 +71,7 @@
     </nav>
     <c:forEach items="${videos}" var="video">
         <div class="card iniline-block" style="width: 22.5rem;">
-            <a href="#">
+            <a href="/to_video_play?videoId=${video.id}">
                 <img class="card-img-top" src="${video.imgSrc}" alt="Card image cap">
             </a>
             <div class="card-footer">

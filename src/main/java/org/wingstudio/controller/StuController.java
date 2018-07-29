@@ -6,12 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.wingstudio.Common.Const;
 import org.wingstudio.entity.Category;
+import org.wingstudio.entity.Comment;
 import org.wingstudio.entity.Student;
 import org.wingstudio.entity.Video;
-import org.wingstudio.service.CategoryService;
-import org.wingstudio.service.CommonService;
-import org.wingstudio.service.StudentService;
-import org.wingstudio.service.VideoService;
+import org.wingstudio.service.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -36,6 +34,9 @@ public class StuController {
     @Autowired
     private CommonService commonService;
 
+    @Autowired
+    private CommentService commentService;
+
     @RequestMapping("/to_index22")
     public ModelAndView toIndex22(){
         ModelAndView modelAndView = new ModelAndView();
@@ -57,7 +58,6 @@ public class StuController {
 
         return modelAndView;
     }
-
     @RequestMapping("/do_login")
     public ModelAndView doLogin(HttpServletRequest request,String stuNum,String password){
 
@@ -74,15 +74,14 @@ public class StuController {
         if(student==null){
             modelAndView.setViewName("student/error");
             modelAndView.addObject("msg","学号或密码错误");
-            return modelAndView;
+
         }else {
             request.getSession().setAttribute(Const.CURRENT_STU,student);
             modelAndView.setViewName("redirect:/to_index");
-            return modelAndView;
+
         }
+        return modelAndView;
     }
-
-
     @RequestMapping("/to_index")
     public ModelAndView toIndex(HttpServletRequest request){
         ModelAndView modelAndView = new ModelAndView("/student/index");
@@ -94,6 +93,32 @@ public class StuController {
         List<Video> videos = videoService.getRecentVideos();
         modelAndView.addObject("categories",categories);
         modelAndView.addObject("videos",videos);
+        return modelAndView;
+    }
+
+    @RequestMapping("/to_video_play")
+    public ModelAndView toVideoPlay(HttpServletRequest request,int videoId){
+        ModelAndView modelAndView = new ModelAndView();
+        Student student = studentService.isOnline(request);
+        if(student==null){
+            modelAndView.setViewName("student/need_login");
+            modelAndView.addObject("msg","需要登录才能播放视频哟");
+        }else {
+            Video video = videoService.getVideoById(videoId);
+            if(video==null){
+                modelAndView.setViewName("student/error");
+                modelAndView.addObject("msg","视频获取出错");
+            }else {
+                List<Comment> comments = commentService.getCommentByVideoId(videoId);
+                List<Category> categories = categoryService.getCategories();
+                videoService.setViewAmount(videoId,video.getViewAmount()+1);
+                video.setViewAmount(video.getViewAmount()+1);
+                modelAndView.addObject("categories",categories);
+                modelAndView.addObject("video",video);
+                modelAndView.addObject("comments",comments);
+                modelAndView.setViewName("/student/video_play");
+            }
+        }
         return modelAndView;
     }
 

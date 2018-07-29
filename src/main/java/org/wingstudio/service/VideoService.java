@@ -15,8 +15,13 @@ public interface VideoService {
 
     List<Video> getRecentVideos();
 
-    List<Video> getVideoByCategoryId(int categoryId);
+    List<Video> getVideosByCategoryId(int categoryId);
 
+
+
+    Video getVideoById(int videoId);
+
+    void setViewAmount(int videoId,int viewAmount);
 
 
 }

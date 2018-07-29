@@ -34,22 +34,35 @@ public class VideoServiceImpl implements VideoService {
 
     @Override
     public List<Video> getRecentVideos() {
-        List<Video> result = new ArrayList<>();
-        Video video = new Video();
-        video.setId(444);
-        video.setTitle("service测试专用1");
-        video.setImgSrc("/static/img/img1.jpg");
-        Video video2 = new Video();
-        video2.setId(4445);
-        video2.setImgSrc("/static/img/img1.jpg");
-        video2.setTitle("service测试专用12");
-        result.add(video);
-        result.add(video2);
+//        List<Video> result = new ArrayList<>();
+//        Video video = new Video();
+//        video.setId(444);
+//        video.setTitle("service测试专用1");
+//        video.setImgSrc("/static/img/img1.jpg");
+//        Video video2 = new Video();
+//        video2.setId(4445);
+//        video2.setImgSrc("/static/img/img1.jpg");
+//        video2.setTitle("service测试专用12");
+//        result.add(video);
+//        result.add(video2);
+        List<Video> result = videoMapper.getRecentVideos();
         return result;
     }
 
     @Override
-    public List<Video> getVideoByCategoryId(int categoryId) {
-        return null;
+    public List<Video> getVideosByCategoryId(int categoryId) {
+        return videoMapper.getVideosByCategoryId(categoryId);
     }
+
+    @Override
+    public Video getVideoById(int videoId) {
+        return videoMapper.getVideoById(videoId);
+    }
+
+    @Override
+    public void setViewAmount(int videoId,int viewAmount) {
+        videoMapper.setViewAmount(videoId,viewAmount);
+    }
+
+
 }

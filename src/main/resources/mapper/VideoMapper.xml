@@ -181,4 +181,16 @@
     SELECT * FROM video WHERE category_id =#{categoryId} ORDER BY create_time DESC
   </select>
 
+  <select id="getRecentVideos" resultMap="BaseResultMap">
+    SELECT * FROM video ORDER BY create_time DESC
+  </select>
+
+  <select id="getVideoById" resultMap="BaseResultMap" parameterType="int">
+    SELECT * FROM video WHERE id =#{videoId}
+  </select>
+
+  <update id="setViewAmount" parameterType="map" >
+    UPDATE video SET view_amount=#{viewAmount} where id=#{videoId}
+  </update>
+
 </mapper>

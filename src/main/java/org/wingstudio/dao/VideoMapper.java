@@ -1,5 +1,6 @@
 package org.wingstudio.dao;
 
+import org.apache.ibatis.annotations.Param;
 import org.wingstudio.entity.Video;
 
 import java.util.List;
@@ -19,4 +20,12 @@ public interface VideoMapper {
 
 
     List<Video> getVideosByCategoryId(Integer categoryId);
+
+    List<Video> getRecentVideos();
+
+    List<Video> getVideoByCategoryId(int categoryId);
+
+    Video getVideoById(int videoId);
+
+    int setViewAmount(@Param("videoId") int videoId, @Param("viewAmount") int viewAmount);
 }
