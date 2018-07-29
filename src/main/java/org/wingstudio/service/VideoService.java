@@ -13,4 +13,10 @@ public interface VideoService {
     List<List<Video>> getVideosByCategory(List<Integer> categoryIds);
 
 
+    List<Video> getRecentVideos();
+
+    List<Video> getVideoByCategoryId(int categoryId);
+
+
+
 }

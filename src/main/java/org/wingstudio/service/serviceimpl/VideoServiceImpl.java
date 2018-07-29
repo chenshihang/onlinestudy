@@ -31,4 +31,25 @@ public class VideoServiceImpl implements VideoService {
         }
         return result;
     }
+
+    @Override
+    public List<Video> getRecentVideos() {
+        List<Video> result = new ArrayList<>();
+        Video video = new Video();
+        video.setId(444);
+        video.setTitle("service测试专用1");
+        video.setImgSrc("/static/img/img1.jpg");
+        Video video2 = new Video();
+        video2.setId(4445);
+        video2.setImgSrc("/static/img/img1.jpg");
+        video2.setTitle("service测试专用12");
+        result.add(video);
+        result.add(video2);
+        return result;
+    }
+
+    @Override
+    public List<Video> getVideoByCategoryId(int categoryId) {
+        return null;
+    }
 }

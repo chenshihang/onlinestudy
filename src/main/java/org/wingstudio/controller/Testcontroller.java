@@ -27,7 +27,7 @@ public class Testcontroller {
 
 
 
-    @RequestMapping("/to_index")
+    @RequestMapping("/to_indextt")
     public String    test1(HttpServletRequest request){
 
         String path = request.getSession().getServletContext().getRealPath("/static/videos/");
