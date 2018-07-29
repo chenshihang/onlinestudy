@@ -37,27 +37,7 @@ public class StuController {
     @Autowired
     private CommentService commentService;
 
-    @RequestMapping("/to_index22")
-    public ModelAndView toIndex22(){
-        ModelAndView modelAndView = new ModelAndView();
-        List<Category> categories = categoryService.getCategories();
 
-        List<Integer> categoryIds =  new ArrayList<>();
-        for(Category category: categories){
-            categoryIds.add(category.getId());
-        }
-        List<List<Video>> videos = videoService.getVideosByCategory(categoryIds);
-
-        modelAndView.addObject("videos",videos);
-        modelAndView.addObject("categories",categories);
-
-        for(Integer categoryId: categoryIds){
-            System.out.println(categoryId+"--------------categoryId---------------");
-        }
-        modelAndView.setViewName("/student/index_test");
-
-        return modelAndView;
-    }
     @RequestMapping("/do_login")
     public ModelAndView doLogin(HttpServletRequest request,String stuNum,String password){
 
