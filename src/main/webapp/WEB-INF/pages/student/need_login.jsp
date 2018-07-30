@@ -12,6 +12,7 @@
 </head>
 <body>
     提示信息：${msg}
+    <a href="/to_login">去登陆</a>
 
 </body>
 </html>

@@ -37,6 +37,10 @@ public class StuController {
     @Autowired
     private CommentService commentService;
 
+    @RequestMapping("/to_login")
+    public String toLogin(){
+        return "student/stu_login";
+    }
 
     @RequestMapping("/do_login")
     public ModelAndView doLogin(HttpServletRequest request,String stuNum,String password){

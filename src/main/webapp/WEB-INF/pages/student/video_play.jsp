@@ -45,53 +45,15 @@
 <script src="/static/js/bootstrap.js"></script>
 
 <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light ">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">首页 <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">热门推荐</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        分类
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <c:forEach items="${categories}" var="category">
-                            <a class="dropdown-item" href="#">${category.name}</a>
-                            <div class="dropdown-divider"></div>
-                        </c:forEach>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <c:choose>
-                        <c:when test="${empty current_stu}">
-                            <a class="nav-link" href="#">${current_guest}</a>
-                        </c:when>
-                        <c:otherwise>
-                            <a class="nav-link" href="#">${current_stu.name}</a>
-                        </c:otherwise>
-                    </c:choose>
-                </li>
-            </ul>
 
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
-            </form>
-        </div>
-    </nav>
-
-
+    <jsp:include page="header.jsp"/>
     <div class="video">
         <h3>视频的名字</h3>
         <hr>
         <p>类别：${video.categoryId}&nbsp;&nbsp;发布时间：${video.createTime}&nbsp;&nbsp; by：admin</p>
         <div class="iniline-block">
             <div class="iniline-block">
-                <img  src="/static/img/video.svg"><span>&nbsp;&nbsp;${video.likeAmount}&nbsp;&nbsp;</span>
+                <img  src="/static/img/video.svg"><span>&nbsp;&nbsp;${video.viewAmount}&nbsp;&nbsp;</span>
             </div>
             <div class="iniline-block">
                 <a href="#comment">
@@ -104,6 +66,12 @@
                     <img  src="/static/img/shoucang.svg">
                 </a>
                 <span>&nbsp;&nbsp;收藏：${video.collectAmount}&nbsp;&nbsp;</span>
+            </div>
+            <div class="iniline-block">
+                <a href="#">
+                    <img  src="/static/img/like.svg">
+                </a>
+                <span>&nbsp;&nbsp;喜欢：${video.likeAmount}&nbsp;&nbsp;</span>
             </div>
         </div>
         <div class="video_play">
