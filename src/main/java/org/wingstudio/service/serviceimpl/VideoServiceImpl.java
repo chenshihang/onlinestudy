@@ -64,5 +64,11 @@ public class VideoServiceImpl implements VideoService {
         videoMapper.setViewAmount(videoId,viewAmount);
     }
 
+    @Override
+    public List<Video> getCollectVideosByStuId(int stuId) {
+
+        return videoMapper.getCollectVideosByStuId(stuId);
+    }
+
 
 }

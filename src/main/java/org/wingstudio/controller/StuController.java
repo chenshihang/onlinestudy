@@ -103,4 +103,18 @@ public class StuController {
     }
 
 
+    @RequestMapping("/to_stu_info")
+    public ModelAndView toMyInfo(HttpServletRequest request){
+        ModelAndView modelAndView = new ModelAndView();
+        Student student = studentService.isOnline(request);
+        if(student==null){
+            modelAndView.setViewName("student/need_login");
+            modelAndView.addObject("msg","需要登录才能访问个人中心");
+        }else {
+            List<Video> videos = videoService.getCollectVideosByStuId(student.getId());
+            modelAndView.addObject("videos",videos);
+            modelAndView.setViewName("student/stu_info");
+        }
+        return modelAndView;
+    }
 }

@@ -23,5 +23,8 @@ public interface VideoService {
 
     void setViewAmount(int videoId,int viewAmount);
 
+    List<Video> getCollectVideosByStuId(int stuId);
+
+
 
 }

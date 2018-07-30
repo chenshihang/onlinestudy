@@ -28,4 +28,6 @@ public interface VideoMapper {
     Video getVideoById(int videoId);
 
     int setViewAmount(@Param("videoId") int videoId, @Param("viewAmount") int viewAmount);
+
+    List<Video> getCollectVideosByStuId(int stuId);
 }

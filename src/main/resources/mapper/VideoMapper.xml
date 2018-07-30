@@ -193,4 +193,7 @@
     UPDATE video SET view_amount=#{viewAmount} where id=#{videoId}
   </update>
 
+  <select id="getCollectVideosByStuId" parameterType="int" resultMap="BaseResultMap">
+    SELECT * FROM video WHERE id IN (SELECT video_id FROM collect WHERE stu_id = #{stuId})
+  </select>
 </mapper>
