@@ -53,16 +53,18 @@ public class StuController {
             modelAndView.addObject("msg","学号或密码错误");
             return modelAndView;
         }
-
         Student student = studentService.doLogin(Integer.parseInt(stuNum),password);
         if(student==null){
             modelAndView.setViewName("student/error");
             modelAndView.addObject("msg","学号或密码错误");
 
+        }else if(student.getStatus()==Const.StuStatus.Forbidden.getStatus()) {
+            modelAndView.setViewName("student/error");
+            modelAndView.addObject("msg","账号被封了，请联系管理员");
         }else {
+            student.setPassword("");
             request.getSession().setAttribute(Const.CURRENT_STU,student);
             modelAndView.setViewName("redirect:/to_index");
-
         }
         return modelAndView;
     }
@@ -116,6 +118,8 @@ public class StuController {
             modelAndView.addObject("msg","需要登录才能访问个人中心");
         }else {
             List<Video> videos = videoService.getCollectVideosByStuId(student.getId());
+            List<Category> categories = categoryService.getCategories();
+            modelAndView.addObject("categories",categories);
             modelAndView.addObject("videos",videos);
             modelAndView.setViewName("student/stu_info");
         }

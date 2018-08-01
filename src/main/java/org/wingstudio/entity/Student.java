@@ -9,14 +9,17 @@ public class Student {
 
     private String name;
 
+    private String password;
+
     private Integer status;
 
     private Date createTime;
 
-    public Student(Integer id, Integer stuNum, String name, Integer status, Date createTime) {
+    public Student(Integer id, Integer stuNum, String name, String password, Integer status, Date createTime) {
         this.id = id;
         this.stuNum = stuNum;
         this.name = name;
+        this.password = password;
         this.status = status;
         this.createTime = createTime;
     }
@@ -47,6 +50,14 @@ public class Student {
 
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
     }
 
     public Integer getStatus() {

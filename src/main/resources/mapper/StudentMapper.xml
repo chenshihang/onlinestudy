@@ -6,12 +6,13 @@
       <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="stu_num" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="password" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="status" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List">
-    id, stu_num, name, status, create_time
+    id, stu_num, name, password, status, create_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -25,9 +26,11 @@
   </delete>
   <insert id="insert" parameterType="org.wingstudio.entity.Student">
     insert into student (id, stu_num, name, 
-      status, create_time)
+      password, status, create_time
+      )
     values (#{id,jdbcType=INTEGER}, #{stuNum,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
-      #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP})
+      #{password,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="org.wingstudio.entity.Student">
     insert into student
@@ -40,6 +43,9 @@
       </if>
       <if test="name != null">
         name,
+      </if>
+      <if test="password != null">
+        password,
       </if>
       <if test="status != null">
         status,
@@ -58,6 +64,9 @@
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
       <if test="status != null">
         #{status,jdbcType=INTEGER},
       </if>
@@ -75,6 +84,9 @@
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
       </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
       <if test="status != null">
         status = #{status,jdbcType=INTEGER},
       </if>
@@ -88,8 +100,13 @@
     update student
     set stu_num = #{stuNum,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="doLogin" resultMap="BaseResultMap" parameterType="map">
+    SELECT * FROM student WHERE stu_num=#{stuNum} AND password=#{password}
+  </select>
 </mapper>

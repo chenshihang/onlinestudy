@@ -1,7 +1,9 @@
 package org.wingstudio.service.serviceimpl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.wingstudio.Common.Const;
+import org.wingstudio.dao.StudentMapper;
 import org.wingstudio.entity.Student;
 import org.wingstudio.entity.Video;
 import org.wingstudio.service.StudentService;
@@ -16,6 +18,11 @@ import java.util.List;
  */
 @Service
 public class StudentServiceImpl implements StudentService {
+
+    @Autowired
+    private StudentMapper studentMapper;
+
+
     @Override
     public Student isOnline(HttpServletRequest request) {
         Object object = request.getSession().getAttribute(Const.CURRENT_STU);
@@ -28,11 +35,10 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Student doLogin(int stuNum, String password) {
-        Student student = new Student();
-        student.setId(2);
-        student.setStuNum(201604044);
-        student.setName("小陈");
-        student.setCreateTime(new Date());
+        Student student =studentMapper.doLogin(stuNum,password);
+
+
+
 
         return student;
     }
