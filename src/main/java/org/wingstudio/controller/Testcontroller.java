@@ -1,16 +1,22 @@
 package org.wingstudio.controller;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.wingstudio.dao.CategoryMapper;
 import org.wingstudio.dao.TestMapper;
+import org.wingstudio.entity.Category;
 import org.wingstudio.entity.Test;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * Testcontroller
@@ -25,6 +31,8 @@ public class Testcontroller {
     @Autowired
     private TestMapper testMapper;
 
+    @Autowired
+    private CategoryMapper categoryMapper;
 
 
     @RequestMapping("/to_indextt")
@@ -47,6 +55,18 @@ public class Testcontroller {
         System.out.println("==================");
 
         return "/index";
+    }
+
+
+    @RequestMapping("/page_test")
+    public String pageTest(){
+        PageHelper.startPage(1, 1);
+
+
+        List<Category> categoryList = categoryMapper.getCategories();
+        PageInfo<Category> pageInfo = new PageInfo<>(categoryList);
+
+        return "/student/error";
     }
 
 
