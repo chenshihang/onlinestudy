@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.wingstudio.dao.VideoMapper">
+  <resultMap id="BaseResultMap" type="org.wingstudio.entity.Video">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="title" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="category_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="introduction" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="img_src" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="path" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="size" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="view_amount" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="like_amount" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="comment_amount" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="collect_amount" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, title, category_id, introduction, img_src, path, size, view_amount, like_amount, 
+    comment_amount, collect_amount, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from video
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from video
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.wingstudio.entity.Video">
+    insert into video (id, title, category_id, 
+      introduction, img_src, path, 
+      size, view_amount, like_amount, 
+      comment_amount, collect_amount, create_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{categoryId,jdbcType=INTEGER}, 
+      #{introduction,jdbcType=VARCHAR}, #{imgSrc,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR}, 
+      #{size,jdbcType=INTEGER}, #{viewAmount,jdbcType=INTEGER}, #{likeAmount,jdbcType=INTEGER}, 
+      #{commentAmount,jdbcType=INTEGER}, #{collectAmount,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.wingstudio.entity.Video">
+    insert into video
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="categoryId != null">
+        category_id,
+      </if>
+      <if test="introduction != null">
+        introduction,
+      </if>
+      <if test="imgSrc != null">
+        img_src,
+      </if>
+      <if test="path != null">
+        path,
+      </if>
+      <if test="size != null">
+        size,
+      </if>
+      <if test="viewAmount != null">
+        view_amount,
+      </if>
+      <if test="likeAmount != null">
+        like_amount,
+      </if>
+      <if test="commentAmount != null">
+        comment_amount,
+      </if>
+      <if test="collectAmount != null">
+        collect_amount,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryId != null">
+        #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="introduction != null">
+        #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="imgSrc != null">
+        #{imgSrc,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null">
+        #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null">
+        #{size,jdbcType=INTEGER},
+      </if>
+      <if test="viewAmount != null">
+        #{viewAmount,jdbcType=INTEGER},
+      </if>
+      <if test="likeAmount != null">
+        #{likeAmount,jdbcType=INTEGER},
+      </if>
+      <if test="commentAmount != null">
+        #{commentAmount,jdbcType=INTEGER},
+      </if>
+      <if test="collectAmount != null">
+        #{collectAmount,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.wingstudio.entity.Video">
+    update video
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryId != null">
+        category_id = #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="introduction != null">
+        introduction = #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="imgSrc != null">
+        img_src = #{imgSrc,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null">
+        path = #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null">
+        size = #{size,jdbcType=INTEGER},
+      </if>
+      <if test="viewAmount != null">
+        view_amount = #{viewAmount,jdbcType=INTEGER},
+      </if>
+      <if test="likeAmount != null">
+        like_amount = #{likeAmount,jdbcType=INTEGER},
+      </if>
+      <if test="commentAmount != null">
+        comment_amount = #{commentAmount,jdbcType=INTEGER},
+      </if>
+      <if test="collectAmount != null">
+        collect_amount = #{collectAmount,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.wingstudio.entity.Video">
+    update video
+    set title = #{title,jdbcType=VARCHAR},
+      category_id = #{categoryId,jdbcType=INTEGER},
+      introduction = #{introduction,jdbcType=VARCHAR},
+      img_src = #{imgSrc,jdbcType=VARCHAR},
+      path = #{path,jdbcType=VARCHAR},
+      size = #{size,jdbcType=INTEGER},
+      view_amount = #{viewAmount,jdbcType=INTEGER},
+      like_amount = #{likeAmount,jdbcType=INTEGER},
+      comment_amount = #{commentAmount,jdbcType=INTEGER},
+      collect_amount = #{collectAmount,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="getVideosByCategoryId" resultMap="BaseResultMap" parameterType="int">
+    SELECT * FROM video WHERE category_id =#{categoryId} ORDER BY create_time DESC
+  </select>
+
+  <select id="getRecentVideos" resultMap="BaseResultMap">
+    SELECT * FROM video ORDER BY create_time DESC
+  </select>
+
+  <select id="getVideoById" resultMap="BaseResultMap" parameterType="int">
+    SELECT * FROM video WHERE id =#{videoId}
+  </select>
+
+  <update id="setViewAmount" parameterType="map" >
+    UPDATE video SET view_amount=#{viewAmount} where id=#{videoId}
+  </update>
+
+  <select id="getCollectVideosByStuId" parameterType="int" resultMap="BaseResultMap">
+    SELECT * FROM video WHERE id IN (SELECT video_id FROM collect WHERE stu_id = #{stuId})
+  </select>
+</mapper>
